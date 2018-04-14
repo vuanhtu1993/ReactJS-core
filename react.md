@@ -3,6 +3,13 @@
 >. Simply specify what your component looks like and
 > React will keep it up-to-date when the underlying data changes.
 
+```
+Adding dependency for React application
+1. Bootstrap Jquery 
+http://blog.oddicles.org/create-react-app-importing-bootstrap-jquery-cleanly-node-js/
+
+```
+
 ### React là gì ?
 1. React là một thư viện Javascript giúp bạn xây dựng tầng Views 
 (thường được xem như là chữ V trong mô hình MVC)
