@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Navigation from "./header";
-import ShoppingList from "./React-tutorial/shopping-list";
+import Game from "./tictactoe/index";
 
 class App extends Component {
     render() {
@@ -10,7 +10,7 @@ class App extends Component {
                 <Navigation/>
                 <h3 className="text-center">Welcome to React application</h3>
                 <div className="container">
-                    <ShoppingList name="AnhTus"/>
+                    <Game/>
                 </div>
             </div>
         );
