@@ -142,7 +142,7 @@ const MyButton = (<button>{1 + 5}</button>)
 ## 1.7 Props [0%]
   * [ ] Understand Props in React <br>
   Props có thể hiểu là thuộc tính của component, props có thể thể là function, object, string, number,... Props là bất biến, không thể thay đổi.
-  ```
+  ```javascript
   function Welcome(props) {
     return <h1>Hello, {props.name}</h1>;
   }
@@ -163,6 +163,12 @@ const MyButton = (<button>{1 + 5}</button>)
   );
   ```
   * [ ] Understand why use props to create "reusable components" <br>
+  ```
+    Tính useable của component đươc thể hiện qua props như sau:
+    Nếu coi componenet là một function thì với mỗi props thì component sẽ trả lại một giá trị tương ứng
+    VD: Coi mỗi bài tin tức của sẽ gồm các thành phần như ... mỗi props khác nhau truyền vào đầu vào 
+    của component con sẽ thể hiện một bài tin tương ứng
+```
   * [ ] Can we set default value for a Prop <br>
   Để set default value cho props bằng cách sử dụng thuộc tính defaultProps
   ```
@@ -186,7 +192,7 @@ const MyButton = (<button>{1 + 5}</button>)
   );
   ```
 ## 1.8 Props Validation [0%]
-  * [ ] Understand what is validation <br>
+  * [ ] Understand what is validation <br> (Giống như khai báo kiểu cho agument của function)
   Validation props dùng để chắc chắn kiểu dữ liệu của props. Nếu kiểu dữ liệu của props không đúng thì sẽ có cảnh báo.
   * [ ] Know how to validate Props in React <br>
   Để validate props trong react sử dụng propTypes.
