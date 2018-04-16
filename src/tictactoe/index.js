@@ -57,6 +57,8 @@ class Game extends Component {
     render() {
         return (
             <div className="game">
+                <h5>Welcome to TicTacToe game</h5>
+                <br/>
                 <div className="game-board">
                     <Board/>
                 </div>
