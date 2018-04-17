@@ -4,16 +4,17 @@ class Board extends Component {
     constructor() {
         super();
         this.state = {
-            squares: Array(9).fill(null)
+            squares: Array(9).fill(null),
+            isNext: true,
         }
     }
     handleClick(i) {
         // copy ra một array square khác
         const squares = this.state.squares.slice();
         // gán giá trị
-        squares[i] = 'X';
+        squares[i] = (this.state.isNext === true) ? 'X' : 'O';
         // gán lại vào state
-        this.setState({squares: squares});
+        this.setState({squares: squares, isNext: !this.state.isNext});
         console.log(squares);
     }
 
