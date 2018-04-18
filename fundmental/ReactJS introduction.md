@@ -207,6 +207,37 @@ Trả lời: Sử dụng PropTypes để làm việc này.
     * Cần có method để cập nhật những thay đổi trên props và state của component.
     * Giải phóng bộ nhớ khi component bị hủy.
 * [ ] Understand 7 lifecycle methods of React Component (http://busypeoples.github.io/post/react-component-lifecycle/)
+    ```
+
+    1. componentWillMount() {
+        console.log('componentWillMount');
+    }
+    // 2. Render
+    componentDidMount() {
+        console.log('componentDidMount');
+        this.setState({todos: [...this.state.todos, {name: '1234567'}]});
+    }
+    3. componentWillReceiveProps(newProps) {
+        console.log('componentWillReceiveProps');
+    }
+    // 4. Có props hoặc state thay đổi
+    shouldComponentUpdate(newProps, newState) {
+        console.log('shouldComponentUpdate', newState);
+        return true;
+    }
+    5. componentWillUpdate(nextProps, nextState) {
+        //
+        console.log('componentWillUpdate', nextState);
+    }
+    // 6. Render lại
+    7. componentDidUpdate(prevProps, prevState) {
+        console.log('componentDidUpdate', prevState);
+    }
+    componentWillUnmount() {
+        console.log('componentWillUnmount');
+    }
+    ```
+    
     * componentWillMount được gọi trước khi render component.
 
     * componentDidMount được gọi sau lần render component đầu tiên. Đây là nơi diễn ra AJAX request, DOM update hoặc state update.Phương thức này còn được dùng để tích hợp với các framework JS khác và các hàm delay quá trình thực thi như setTimeOut hay setInterval. chúng ta sẽ sử dụng phương thức này để update state, do đó ta có thể kích hoạt các lifecycle method khác.
