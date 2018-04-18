@@ -1,237 +1,242 @@
 # 1 React fundamentals
-  * Read: https://www.tutorialspoint.com/reactjs/reactjs_overview.htm
-## 1.1 What exactly is React ?
-  * [ ] Read https://blog.andrewray.me/reactjs-for-stupid-people/
-  * [ ] Read https://facebook.github.io/react/docs/why-react.html
-  * [ ] Read https://facebook.github.io/react/blog/2013/06/05/why-react.html
-  * [ ] Understand what is React, who build React <br>
-  React một thư viện Javascript được phát triển bởi Facebook để xây dựng các thành phần ở giao diện người dùng có thể tái sử dụng được. React được sử dụng trong Facebook, Instagram. React được ví như phần View của mô hình MVC.
-  * [ ] Understand why use React <br>
-  - React sử dụng Viture DOM: cải thiện hiệu năng của trang web.
-  - Có thể xây dựng các các Component có thể sử dụng lại.
-  - React không chỉ hoạt động ở phía client mà còn có thể render ở phía server
-  * [ ] Understand React advantages/disadvantages <br>
-  * [ ] Understand Virtual DOM <br>
-  Với DOM thật thì khi có mỗi thay đổi trên DOM thì browser sẽ render lại toàn bộ DOM nên nếu có nhiều thay đổi thì DOM sẽ phải lại render lại nhiều lần. Việc này làm ảnh hưởng đến tốc độ tải trang web. Trong React sử dụng DOM ảo giống với DOM thật nhưng khi có thay đổi trên DOM thì DOM ảo này sẽ tìm kiếm lại những điểm thay đổi và render lại DOM mới. Sử dụng DOM ảo giúp cải thiện tốc độ tải trang của trang web.
-## 1.2 Environment Setup
-  * [ ] Read: https://github.com/facebook/create-react-app
-  * [ ] What is create-react-app <br>
-  ```create-react-app``` là một package giúp thiết lập nhanh một project React.
-  * [ ] Create a new app with create-react-app <br>
-  Tạo một folder chứa procject -> cd tới thư mục -> Chạy lệnh ```npm install create-react-app``` -> ```create-react-app <tên_project>``` 
-  Như vậy một React project đã được tạo ra.
-  * [ ] How to runs the app created by create-react-app in development mode ? <br>
-  Để run project được tạo ta bằng ```create-react-app``` ta cd vào project đó và chạy lệnh ```npm start```. Project sẽ được chạy ở đường dẫn http://localhost:3000/.
-  * [ ] Investigate a React project structure <br>
-  Một React project khi được tạo ra có cấu trúc như hình bên dưới: <br>
-  ![alt text](https://image.ibb.co/i8pBWc/Capture.png "React project structure")
-    * node_modules: là thư mục chứa các package khi được cài đặt vào project.
-    * scr: những đoạn code sẽ được chứa trong các file bên trong thư mục này.
-    * .gitignore: chứa các thư mục, các file sẽ được bỏ qua và không được commit lên.
-    * package.json: file này chứa các cài đặt của project. 
-## 1.3 Hello World
-  * [ ] Understand React render method <br>
-  render() method của Component sẽ mô tả Component sẽ như thế nào. Hàm render() chỉ render ra một nốt duy nhất nên nếu có nhiều node thì cần bọc nó lại, có thể trog một thẻ div.
-  * [ ] Modify the app to display 'Hello World' in app
-  * [ ] Using Developer Tools to inspect HTML <br>
-## 1.4 Component 
-  * [ ] Understand what is a React Component ? <br>
-  React được xây dựng xung quanh các Component, chứ không dùng template như các framework khác. Mỗi thành phần trên giao diện là một    Component. Các component có thể là Button, InputText, ... và các component có thể được lồng nhau. Các component trong React giống như các thể HTML. Mỗi component đều có props và state.
-  Để tạo một component ta có hai cách: 
-  ```
-  // Khởi tạo bằng function
-  function Welcome(props) {
-     return <h1>Hello, {props.name}</h1>;
-  }
-  // Sử dụng class trong ES6
-  class Welcome extends React.Component {
-    render() {
-      return <h1>Hello, {this.props.name}</h1>;
+ Read: https://www.tutorialspoint.com/reactjs/reactjs_overview.htm
+## 1.1 What exactly is React ? [0%]
+* [X] Read https://blog.andrewray.me/reactjs-for-stupid-people/
+* [X] Read https://facebook.github.io/react/docs/why-react.html
+* [X] Read https://facebook.github.io/react/blog/2013/06/05/why-react.html
+* [X] Understand what is React, who build React<br>
+    Trả lời:
+    * React là một thư viện Javascript dùng để xây dựng giao diện người dùng, được viết bởi Jordan Walke và các kỹ sư tại Facebook.
+    * Thành phần để xây dựng giao diện trong React được gọi là component, một component có thể mang trạng thái (stateful) hoặc không (stateless).
+    * Các công nghệ sử dụng trong React: JSX, virtual DOM,...
+* [ ] Understand why use React<br>
+    * React là thư viện xây dựng giao diện người dùng bằng các component. => khả năng tái sử dụng cao.
+    * ReactJS sử dụng virtual DOM để cập nhật những sự thay đổi lên DOM thật giúp tránh những thao tác không cần thiết trên DOM.
+    * Có thể chạy React trên server để tối ưu hóa SEO và tăng tốc độ tải trang. 
+* [ ] Understand React advantages/disadvantages
+    * Advantages:
+        * Hiệu suất cao: ReactJS sử dụng virtual DOM, chỉ tính toán những sự thay đổi lên DOM và cập nhật chúng, giúp ReactJS tránh những thao tác không cần thiết trên DOM.
+        * Server-side rendering: React có thể được chạy ở phía server giúp tăng tốc độ tải trang và tối ưu hóa SEO.
+        * Test giao diện dễ dàng hơn vì React được viết hoàn toàn bằng Javascript.
+    * Disadvantages:
+        * Cú pháp lạ lẫm cho người mới bắt đầu.
+        * React chỉ là 1 library phục vụ tầng View, cần kết hợp với các thư viện và framework khác để có phần Model và Controller.
+        * Kích thước khá nặng so với framework khác.
+        * Không tích hợp AJAX. 
+* [X] Understand Virtual DOM<br>
+    Trả lời: 
+    * Virtual DOM là một đối tượng đại diện cho DOM, chứa các thông tin của DOM như các thuộc tính,... tuy nhiên virtual DOM không có khả năng render sự thay đổi của các thuộc tính lên màn hình như DOM thật.
+    * Việc truy xuất trên virtual DOM nhanh hơn so với DOM thật, giống như việc thay đổi vị trí các căn phòng trên bản thiết của 1 ngôi nhà so với trên 1 ngôi nhà thật.
+    * React sử dụng virtual DOM để tăng tốc độ truy xuất, cập nhật lên DOM, cơ chế hoạt động:
+    ```
+    1. Khi có sự thay đổi trên DOM, toàn bộ virtual DOM được cập nhật.
+    2. React so sánh sự thay đổi trên virtual DOM với phiên bản cũ của virtual DOM tại thời điểm trước khi cập nhật. Bằng cách này, React sẽ biết được chính xác phần nào của virtual DOM đã được thay đổi.
+    3. React chỉ lấy những phần thay đổi trên virtual DOM để cập nhật lên DOM thật.
+    4. DOM render những phần được thay đổi lên màn hình.
+    ```
+## 1.2 Environment Setup [0%]
+* [X] Read: https://github.com/facebook/create-react-app
+* [X] What is create-react-app
+* [X] Create a new app with create-react-app
+* [X] How to runs the app created by create-react-app in development mode ?
+* [X] Investigate a React project structure
+### 1.3 Hello World [%]
+* [X] Understand React render method<br>
+    * render() là method của abstract class React.Component
+    * khi hàm render được gọi, các props và state của component được xem xét rồi trả về các giá trị:
+        * React elements. Thường được tạo thông qua JSX. Một element có thể là các thẻ của native DOM (<div />) hoặc là các thẻ người dùng tự định nghĩa.
+        * String and numbers. Các giá trị này sẽ được render thành các text node trên DOM.
+        * Portals. Được tạo nên với ReactDOM.createPortal.
+        * null. Không render.
+        * Booleans. Không render.
+    * Hàm render nên chỉ được dùng để render dữ liệu, không nên dùng nó để thay đổi giá trị state hay tương tác trực tiếp với browser. Việc tương tác với browser, thay vào đó, nên dùng các method khác trong life cycle như componentDidMount().
+* [X] Modify the app to display 'Hello World' in app
+* [X] Using Developer Tools to inspect HTML
+### 1.4 Component [0%]
+* [X] Understand what is a React Component ?<br>
+Về mặt lý thuyết, components là các javascript function. Chúng nhận các giá trị đầu vào (props) và trả về các element mô tả những gì sẽ được hiển thị lên màn hình.
+* [X] Understand how many type of React Component ?<br> 
+    * Functional Component: cách đơn giản nhất để khai báo một component. Thường sử dụng cách khai báo này cho các stateless component cho ngắn gọn.
+    ```
+    function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>;
+        }
+    ```
+    * Class Component: Khai báo component dưới dạng class
+    ```
+    class Greeting extends React.Component {
+        render() {
+            return <h1>Hello, {this.props.name}</h1>;
+        }
     }
-  }
-  ```
-  * [ ] Understand how many type of React Component ? <br>
-  Có 2 loại component: class component và function component.
-## 1.5 JSX
-  * [ ] Understand what is JSX <br>
-  JSX là một cú pháp mở rộng của Javascript, với JSX có thể viết Javascript với những tag giống như HTML
-  . Về bản chất các tag là những lời gọi hàm sẽ được chuyển đổi trong React code và end up dưới dạng HTML và Javascript trong cây DOM.
-```
-// JSX
-const element = <h1>Hello</h1>;
+    ```
+### 1.5 JSX [0%]
+* [X] Understand what is JSX<br>
+    JSX là bộ cú pháp mở rộng của Javascript, giúp thể hiện code Javascript dưới dạng ngôn ngữ template như HTML.
+    ```
+    // JSX
+    const element = <h1>Hello, world!</h1>;
 
-//Code React sau khi được complie
-const element = React.createElement('h1', null, 'Hello');
-```
-  * [ ] Understand why JSX <br>
-  - JXS đảm bảo tính dễ đọc và làm cho việc bảo trì được dễ dàng hơn.<br>
-  - JSX tối ưu hóa code khi compile, vì vậy nó chạy nhanh hơn so với code JavaScript tương đương
-  * [ ] Understand how to use JSX <br>
-```
-// Tạo một JSX
-const MyButton = (<button>Click Me</button>)
-```
-  * [ ] Understand how to add JavaScript to JSX <br>
-  Đặt các cặp biểu thức Javascript vào dấu ngoặc nhon {}
-```
-// Button sẽ có nội dung là 6
-const MyButton = (<button>{1 + 5}</button>)
-```
-  * [ ] Understand the limitation of JavaScript in JSX <br>
-  * [ ] Understand how we add style in JSX? How to <br>
-  Có 2 cách add style trong JSX
-  - Sử dụng thuộc tính className cho JSX như class của một thẻ html thông thường.
-  ```
-  const element = <div className="Hello">Hello</div>
-  ```
-  - Inline style
-  ```
-  const divStyle = {
-    color: 'blue'
-  };
+    // ES5
+    var element = React.createElement(
+        "h1",
+        null,
+        "Hello, world!"
+        );
+    ```
+* [X] Understand why JSX<br>
+    * Cú pháp JSX giúp lồng phần code markup và phần code logic lại với nhau để tạo thành các component.
+    * Giúp người phát triển dễ hình dung được layout của component do cú pháp của JSX có nét tương đồng với ngôn ngữ markup.
+* [X] Understand how to use JSX
+* [X] Understand how to add JavaScript to JSX
+    * Có thể nhúng các biểu thức Javascript vào trong JSX.<br>
+    * Syntax: đặt biểu thức Javascript vào trong cặp { }
+    ```
+    const user = {
+    firstName: 'Harper',
+    lastName: 'Perez'
+    };
 
-  function HelloWorldComponent() {
-    return <div style={divStyle}>Hello World!</div>;
-  }
-  ```
-  * [ ] Understand what is JSX Comment <br>
-  ```
-  <div>
-    {/* Comment goes here */}
-    Hello, {name}!
-  </div>
-  ```
-  * [ ] Practice put JSX Comment
-  * [ ] Understand Naming Convention of JSX <br>
-  Tên của các component được viết theo kiểu Pascal Case(viết hoa kí tự đầu tiên của mỗi từ).
-  * [ ] Know why class and for of HTML is not the same in JSX <br>
-  Để tránh trùng lặp với các từ khóa trong JXS. Ta có thể dùng className thay cho class, htmlFor thay cho for.
-  * [ ] Practice know how to iterating & rendering list in React: http://jasonjl.me/blog/2015/04/18/rendering-list-of-elements-in-react-with-jsx/
-## 1.6 State [0%]
-  * [ ] Understand State in React (what, why and how it work?) <br>
-  State biểu diễn trạng thái của component, state là private chỉ có thể thay đổi bên trong bản thân của chính component đó. 
-  * [ ] Know how to change State of a Component via user input or programmatically <br>
-  Để thay đổi state của một component bằng cách sử dụng this.setState().
-  ```
-   class App extends React.Component {
-      constructor(props) {
-        super(props);
-        this.state = {
-          name: ''
-      };
-      this.onChange = this.onChange.bind(this);
-   }
-
-   onChange(e) {
-     this.setState({name: e.target.value});
-   }
-
-   render() {
-     return (
-       <div>
-         <input type='text' onChange={this.onChange} />
-         <h1>{this.state.name}</h1>
-       </div>
-     );
-   }
- }
- ```
- Ở đoạn code khởi tạo state với name: ''.
- Function onChange được gọi mỗi khi giá trị input thay đổi và nó sẽ setState name bằng giá trị input.
- Mỗi khi state.name thay đổi thì thẻ h1 sẽ được render lại.
-## 1.7 Props [0%]
-  * [ ] Understand Props in React <br>
-  Props có thể hiểu là thuộc tính của component, props có thể thể là function, object, string, number,... Props là bất biến, không thể thay đổi.
-  ```javascript
-  function Welcome(props) {
-    return <h1>Hello, {props.name}</h1>;
-  }
-
-  function App() {
-    return (
-      <div>
-        <Welcome name="Sara" />        // Hello, Sara
-        <Welcome name="Cahal" />       // Hello, Cahal
-        <Welcome name="Edite" />       // Hello, Edite
-      </div>
+    const element = (
+    <h1>
+        Hello, {user.firstName}! 
+    </h1>
     );
-  }
+    ```
+* [X] Understand the limitation of JavaScript in JSX<br>
+    Đoạn code truyền vào JSX chỉ có thể là biểu thức, không thể là câu lệnh.
+* [X] Understand how we add style in JSX? How to
+    * Sử dụng css class: sử dụng className thay cho class để tránh xung đột với các từ khóa khác của Javascript. Nhược điểm: Khi style 1 component thì các component khác cùng className với component đó sẽ bị ảnh hưởng => giải pháp: tạo className mới cho nó hoặc dùng inline style.
+    * Sử dụng inline style trong JSX:
+    ```
+    const divStyle = {
+        color: 'blue',
+        backgroundImage: 'url(' + imgUrl + ')',
+    };
 
-  ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-  );
-  ```
-  * [ ] Understand why use props to create "reusable components" <br>
-  ```
-    Tính useable của component đươc thể hiện qua props như sau:
-    Nếu coi componenet là một function thì với mỗi props thì component sẽ trả lại một giá trị tương ứng
-    VD: Coi mỗi bài tin tức của sẽ gồm các thành phần như ... mỗi props khác nhau truyền vào đầu vào 
-    của component con sẽ thể hiện một bài tin tương ứng
-```
-  * [ ] Can we set default value for a Prop <br>
-  Để set default value cho props bằng cách sử dụng thuộc tính defaultProps
-  ```
-  class Greeting extends React.Component {
-    render() {
-      return (
-        <h1>Hello, {this.props.name}</h1>
-      );
+    function HelloWorldComponent() {
+        return <div style={divStyle}>Hello World!</div>;
     }
-  }
-
-  // Specifies the default values for props:
-  Greeting.defaultProps = {
-    name: 'Stranger'
-  };
-
-  // Renders "Hello, Stranger":
-  ReactDOM.render(
-    <Greeting />,
-    document.getElementById('root')
-  );
-  ```
+    ```
+    Nhược điểm: Khả năng tái sử dụng không cao, code trở nên dài dòng.
+    * Sử dụng css-in-js: Nhược điểm: các file js cần phải được load xong để trả về code css, layout trang web trước đó sẽ không có css => xấu
+* [X] Understand what is JSX Comment<br>
+    Cú pháp comment: {/* This is a comment*/}
+* [X] Practice put JSX Comment
+* [X] Understand Naming Convention of JSX
+    * Đối với component người dùng tự định nghĩa, tên component phải được viết dưới dạng Pascal Case. Component phải được viết dưới dạng thẻ đơn < />.
+    ```
+    const element = <div> <MyButton/> </div>;
+    ```
+* [X] Know why class and for of HTML is not the same in JSX
+    * Vì bản chất của JSX là Javascript. Nếu JSX dùng class hay for như trên HTML sẽ gây xung đột với những từ khóa của JS. Giải pháp: Sử dụng className, htmlFor thay cho class, for.
+* [X] Practice know how to iterating & rendering list in React: http://jasonjl.me/blog/2015/04/18/rendering-list-of-elements-in-react-with-jsx/
+## 1.6 State [0%]
+* [X] Understand State in React (what, why and how it work?)
+    * what: State là một thuộc tính của Component, dùng để lưu trữ dữ liệu có khả năng thay đổi bên trong component.
+    * Giá trị của state chỉ có thể được truy cập ở bên trong component.
+    * why: Trong nhiều trường hợp, dữ liệu không bất biến mà có thể thay đổi, VD: Số bản ghi trong 1 table, số lượng bài hát trong 1 playlist hay trạng thái công việc của 1 to-do list. Do đó cần phải có 1 phương pháp lưu trữ dữ liệu mà giá trị của dữ liệu có thể thay đổi được.
+    * how it work: Giá trị của state được khởi tạo bên trong hàm constructor.
+    * Để thay đổi giá trị của state, ta dùng hàm setState. Về lý thuyết, ta vẫn có thể thay đổi trực tiếp giá trị của state không cần qua hàm setState, tuy nhiên React sẽ không render giá trị mới đó lên DOM. 
+    * setState nhận giá trị đầu vào là 1 function hoặc 1 object.
+    * State là bất đồng bộ.
+* [X] Know how to change State of a Component via user input or programmatically
+## 1.7 Props [0%]
+* [X] Understand Props in React<br>
+    * Khi React tìm thấy một component mà người dùng tự định nghĩa, nó đưa các thuộc tính của component đó vào một object được gọi là props. VD:
+    ```
+    <MyButton name = "Add" />  // props { name : "Add"}
+    ```
+    * Như vậy, props là 1 object chứa các giá trị được truyền từ bên ngoài vào trong Component.
+    * props bất biến dưới góc nhìn của component, nó chỉ là thông tin được truyền vào component.
+    * Khi muốn validate giá trị của props, ta dùng PropTypes để làm việc đó:
+    ```
+    class App extends React.Component {
+        render() {
+            return ( 
+                <div>
+                    <h1> Hello, {this.props.name} </h1>
+                    <h3>Array: {this.props.propArray}</h3>			
+                    <h3>Bool: {this.props.propBool ? "True..." : "False..."}</h3>
+                </div>
+                );
+            }
+        }
+    App.propTypes = {
+        name: PropTypes.string,
+        propArray: PropTypes.array.isRequired,
+        propBool: PropTypes.bool.isRequired,
+    };
+    ```
+* [X] Understand why use props to create "reusable components"<br>
+    Chúng ta có thể đặt nhiều component cùng loại tại nhiều nơi, với các giá trị truyền vào khác nhau tùy theo mỗi component. Và props được dùng để lưu các giá trị truyền vào ấy.
+* [X] Can we set default value for a Prop<br>
+    Khi muốn set giá trị mặc định cho props, chúng ta dùng defaultProps để làm việc đó.
+    ```
+    class App extends React.Component {
+        render() {
+            return ( 
+                <div>
+                    <h1> Hello, {this.props.name} </h1>
+                    <h3>Array: {this.props.propArray}</h3>			
+                    <h3>Bool: {this.props.propBool ? "True..." : "False..."}</h3>
+                </div>
+                );
+        }
+    }
+    App.propTypes = {
+        name: PropTypes.string,
+        propArray: PropTypes.array.isRequired,
+        propBool: PropTypes.bool.isRequired,
+    };
+    App.defaultProps = {
+        name: 'Tutorialspoint.com',
+        propArray: [1, 2, 3, 4, 5],
+        propBool: true,
+    }
+    ```
 ## 1.8 Props Validation [0%]
-  * [ ] Understand what is validation <br> (Giống như khai báo kiểu cho agument của function)
-  Validation props dùng để chắc chắn kiểu dữ liệu của props. Nếu kiểu dữ liệu của props không đúng thì sẽ có cảnh báo.
-  * [ ] Know how to validate Props in React <br>
-  Để validate props trong react sử dụng propTypes.
-  ```
-  import PropTypes from 'prop-types';
-
-  class Greeting extends React.Component {
-    render() {
-      return (
-        <h1>Hello, {this.props.name}</h1>
-      );
-    }
-  }
-
-  Greeting.propTypes = {
-    name: PropTypes.string
-  };
-  ```
+* [X] Understand what is validation<br>
+Trả lời: Là việc kiểm tra tính đúng đắn của dữ liệu đầu vào dựa trên những điều kiện cho trước.
+* [X] Know how to validate Props in React<br>
+Trả lời: Sử dụng PropTypes để làm việc này.
 ## 1.9 Component Lifecycle Methods [%]
-  * [ ] Understand what is lifecycle methods <br>
-  Một component sẽ có 4 lifecycle được thực hiện theo thứ tự: <br>
-  - constructor(): được gọi khi một component được khởi tạo. Ta có thể thiết lập state ban đầu và ràng buộc các class method. <br>
-  - componentWillMount(): giai đoạn chuẩn bị render component lần đầu, chỉ sử dụng một lần. <br>
-  - render(): phương thức này là bắt buộc và trả về là các thành phần của component.
-  - componentDidMount(): giai đoạn sau khi render component lần đầu.
-  * [ ] Understand why we need lifecycle methods <br>
-  * [ ] Understand 7 lifecycle methods of React Component (http://busypeoples.github.io/post/react-component-lifecycle/) <br>
-  * [ ] Understand componentDidMount = where you do DOM manipulation & AJAX request <br>
-  * [ ] Understand componentWillMount = clean up after your React components gets destroyed <br>
-  * [ ] Practice: create a Component that have 7 lifecycle methods and observe the behaviour <br>
+* [X] Understand what is lifecycle methods<br>
+    Là các method được gọi tại những thời điểm nhất định trong vòng đời của 1 component.
+* [ ] Understand why we need lifecycle methods
+    * Cần có method để cập nhật những thay đổi trên props và state của component.
+    * Giải phóng bộ nhớ khi component bị hủy.
+* [ ] Understand 7 lifecycle methods of React Component (http://busypeoples.github.io/post/react-component-lifecycle/)
+    * componentWillMount được gọi trước khi render component.
+
+    * componentDidMount được gọi sau lần render component đầu tiên. Đây là nơi diễn ra AJAX request, DOM update hoặc state update.Phương thức này còn được dùng để tích hợp với các framework JS khác và các hàm delay quá trình thực thi như setTimeOut hay setInterval. chúng ta sẽ sử dụng phương thức này để update state, do đó ta có thể kích hoạt các lifecycle method khác.
+
+    * componentWillReceiveProps được gọi ngay khi props được update.
+
+    * shouldComponentUpdate là hàm trả vê giá trị true hoặc false, thực hiện khi props hoặc state thay đổi. Cần sử dụng đến hàm này để xử lý xem có cần update component không.
+
+    * componentWillUpdate được gọi ngay trước khi render component. Hàm này thực hiện dựa vào kết quả của hàm trên (shouldComponentUpdate). Nếu hàm trên trả về false, thì React sẽ không gọi hàm này
+
+    * componentDidUpdate được gọi sau khi component được render lại, từ kết quả của componentWillUpdate.
+
+    * componentWillUnmount được gọi khi component bị gỡ bỏ khỏi cây DOM. (when the DOM is rerendered without the component, or if the user navigates to a different website or closes their web browser.)
+* [X] Understand componentDidMount = where you do DOM manipulation & AJAX request
+* [X] Understand componentWillUnmount = clean up after your React components gets destroyed
+* [ ] Practice: create a Component that have 7 lifecycle methods and observe the behaviour<br>
+    https://codepen.io/haidotienn/pen/xWvWbx?editors=1010#0
 ## 1.10 Forms [%]
-  * [ ] Understand how to to forms in React <br>
+* [ ] Understand how to to forms in React<br>
+    * Thông thường, form sẽ giữ trạng thái của riêng nó. Tuy nhiên, trong React, component chứa form sẽ quản lý trạng thái của form đó.
+    * Component quản lý trạng thái của form bằng các function truyền vào attribute onChange của các thẻ input, textarea, select,...
 ## 1.11 Events [%]
-  * [ ] Understand how to handle events in React such as: click event on a button, keypress event on a input <br>
+* [X] Understand how to handle events in React such as: click event on a button, keypress event on a input
 ## 1.12 Refs [%]
-  * [ ] Understand refs = how to acess DOM nodes within your React Component (https://reactjs.org/docs/refs-and-the-dom.html#the-ref-string-attribute) <br>
-  * [ ] Practice use refs to access a div and change style add text to it <br>
+* [X] Understand refs = how to acess DOM nodes within your React Component (https://reactjs.org/docs/refs-and-the-dom.html#the-ref-string-attribute)
+* [ ] Practice use refs to access a div and change style add text to it
 ## 1.13 Mixins [0%]
-  * [ ] Understand mixins = reuse methods across multiple components (https://reactjs.org/docs/components-and-props.html#mixins) <br>
+* [ ] Understand mixins = reuse methods across multiple components (https://reactjs.org/docs/components-and-props.html#mixins)
 ## 1.14 Practice [0%]
-  * [ ] Build Countdown app using React
-  * [ ] Build Todo app using React
+* [X] Build Countdown app using React: https://github.com/pieliedie/countdown-clock
+* [X] Build Todo app using React: https://github.com/pieliedie/to-do-list
+
+
