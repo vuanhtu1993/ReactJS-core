@@ -3,6 +3,7 @@ import './App.css';
 import Navigation from "./header";
 import Game from "./tictactoe/index";
 import CountDown from "./countdown/countdown";
+import Todos from "./Todos/todos";
 
 class App extends Component {
     render() {
@@ -13,6 +14,7 @@ class App extends Component {
                 <div className="container">
                     <Game/>
                     <CountDown/>
+                    <Todos/>
                 </div>
             </div>
         );
