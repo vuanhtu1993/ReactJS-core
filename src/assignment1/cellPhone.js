@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
-import iphone from './mobilePic/1.jpg';
+import axios from 'axios';
+
+
 import Search from "./searchComponent";
+import Suggestions from "./suggestion";
+
+const API_URL = 'http://5ad855aedc1baa0014c60af3.mockapi.io/phones';
 
 class CellPhone extends Component {
 	constructor(props) {
@@ -13,21 +18,48 @@ class CellPhone extends Component {
 				{name: 'Sony', price: '650', img: './mobilePic/1.jpg'},
 			],
 			query: '',
+			results: [],
+			queryResult: [],
 		}
 	}
 
-	handleInputChange = (search) => {
+	componentWillMount() {
+		this.getInfo();
+	}
+
+	getInfo = () => {
+		axios.get(API_URL)
+			.then((res) => {
+				this.setState({
+					results: res.data,
+				});
+			});
+	};
+
+	doSearch = (search) => {
 		this.setState({
 			query: search,
 		})
 	};
+	filterList = (event) => {
+		let updatedList = this.state.results;
+		updatedList = updatedList.filter(function(item){
+			return item.name.toLowerCase().search(
+				event.toLowerCase()) !== -1;
+		});
+		this.setState({queryResult: updatedList});
+	};
+
 
 	render() {
-
 		return (
 			<div>
-				<Search handleSearch={this.handleInputChange}/>
-				<div>{this.state.query}</div>
+				<Search handleSearch={this.filterList}/>
+				<ul>
+					{this.state.queryResult.map((user) =>
+						<li>{user.name}</li>
+					)}
+				</ul>
 				<div className="container">
 					<div className="row">
 						{this.state.phones.map((phone, i) =>
