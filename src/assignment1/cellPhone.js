@@ -5,20 +5,13 @@ import axios from 'axios';
 import Search from "./searchComponent";
 import Suggestions from "./suggestion";
 
-const API_URL = 'http://5ad855aedc1baa0014c60af3.mockapi.io/phones';
+const API_URL = 'http://localhost:8888/phones';
 
 class CellPhone extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			phones: [
-				{name: 'Iphone', price: '1000', img: './mobilePic/1.jpg'},
-				{name: 'Samsung', price: '800', img: './mobilePic/1.jpg'},
-				{name: 'HTC', price: '800', img: './mobilePic/1.jpg'},
-				{name: 'Sony', price: '650', img: './mobilePic/1.jpg'},
-			],
-			query: '',
-			results: [],
+			phones: [],
 			queryResult: [],
 		}
 	}
@@ -31,46 +24,38 @@ class CellPhone extends Component {
 		axios.get(API_URL)
 			.then((res) => {
 				this.setState({
-					results: res.data,
+					phones: res.data,
 				});
 			});
 	};
 
-	doSearch = (search) => {
-		this.setState({
-			query: search,
-		})
-	};
 	filterList = (event) => {
-		let updatedList = this.state.results;
-		updatedList = updatedList.filter(function(item){
-			return item.name.toLowerCase().search(
+		let updatedList = this.state.phones;
+		updatedList = updatedList.filter(function (item) {
+			return item.phoneName.toLowerCase().search(
 				event.toLowerCase()) !== -1;
 		});
 		this.setState({queryResult: updatedList});
+		if (!event) {
+			this.setState({queryResult: []});
+		}
 	};
-
 
 	render() {
 		return (
 			<div>
 				<Search handleSearch={this.filterList}/>
-				<ul>
-					{this.state.queryResult.map((user) =>
-						<li>{user.name}</li>
-					)}
-				</ul>
+				<Suggestions queryResult={this.state.queryResult}/>
 				<div className="container">
 					<div className="row">
 						{this.state.phones.map((phone, i) =>
 							<div className="col-sm-3" key={i}>
 								<div className="card">
-									<img className="card-img-top" src={phone.img} alt='cell phone'/>
+									<img className="img-fluid" src={phone.imgUrl} alt='cell phone'/>
 									<div className="card-body">
-										<h5 className="card-title">{phone.name}</h5>
-										<p className="card-text">Some quick example text to build on the card title and
-											make-up the bulk of the card's content.</p>
-										<a className="btn btn-primary">Go somewhere</a>
+										<h5 className="card-title">{phone.phoneName}</h5>
+										<p className="card-text">Price: {phone.price}</p>
+										<a className="btn btn-primary">Detail</a>
 									</div>
 								</div>
 							</div>
