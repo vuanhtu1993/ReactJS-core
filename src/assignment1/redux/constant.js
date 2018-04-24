@@ -1,1 +1,1 @@
-export const LIST_PHONE = 'LIST-PHONE';
+export const COLLECT_PHONE = 'COLLECT_PHONE';

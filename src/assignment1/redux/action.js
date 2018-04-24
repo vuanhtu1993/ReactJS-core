@@ -1,9 +1,8 @@
-import { LIST_PHONE } from "./constant";
+import { COLLECT_PHONE } from "./constant";
 
-export function listPhone(listPhone) {
-	console.log(listPhone);
+export function collectPhone(listPhone) {
 	return {
-		type: LIST_PHONE,
+		type: COLLECT_PHONE,
 		payload: listPhone,
 	}
 }
