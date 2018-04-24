@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
+import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom';
 
 import Search from "./searchComponent";
 import Suggestions from "./suggestion";
+// connect to store
+import {connect} from 'react-redux';
+import {collectPhone} from "./redux/action";
 
-const API_URL = 'http://localhost:8888/phones';
+const API_URL = 'https://sheltered-ravine-87997.herokuapp.com/phones';
 
 class CellPhone extends Component {
 	constructor(props) {
@@ -23,6 +26,7 @@ class CellPhone extends Component {
 	getInfo = () => {
 		axios.get(API_URL)
 			.then((res) => {
+				this.props.collectPhones(res.data);
 				this.setState({
 					phones: res.data,
 				});
@@ -55,7 +59,7 @@ class CellPhone extends Component {
 									<div className="card-body">
 										<h5 className="card-title">{phone.phoneName}</h5>
 										<p className="card-text">Price: {phone.price}</p>
-										<a className="btn btn-primary">Detail</a>
+										<Link className="btn btn-primary" to={`${this.props.match.url}/${phone._id}`}>Detail</Link>
 									</div>
 								</div>
 							</div>
@@ -66,5 +70,7 @@ class CellPhone extends Component {
 		)
 	}
 }
-
-export default CellPhone;
+const mapDispatchToProps = dispatch => ({
+	collectPhones: phones => dispatch(collectPhone(phones))
+});
+export default connect(null, mapDispatchToProps)(CellPhone);
