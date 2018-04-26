@@ -1,15 +1,36 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import React, {Component} from 'react';
+import {connect} from 'react-redux'
 
 class Todo extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
+		this.state = {
+			input: ''
+		}
 	}
+
+	handleChangeInput = (e) => {
+		this.setState({input: e.target.value})
+	};
+	
 	render() {
-		console.log(this.props.todos);
-		return(
+		let todos = this.props.todos;
+		return (
 			<div className="container">
-				Hello
+				Welcome to app
+				<p>Add todos:</p>
+				<input
+					type="text"
+					onChange={this.handleChangeInput}
+					value={this.state.input}/>
+				<button className="btn btn-outline-danger">ADD</button>
+				<p>List todo:</p>
+				<ul>
+					{todos.map((todo) =>
+						<li>
+							{todo.text}
+						</li>)}
+				</ul>
 			</div>
 		)
 	}
