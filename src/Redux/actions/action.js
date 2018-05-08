@@ -2,7 +2,14 @@
 /** */
 import axios from 'axios'
 //const url = "http://localhost:5000/api/"
-const url = process.env.NODE_ENV === 'production' ? "/api/" : "http://localhost:5000/api/"
+export const url = 'https://immense-waters-28989.herokuapp.com/api/';
+
+export let header = {
+	headers: {
+		'Content-Type': 'application/json;charset=UTF-8',
+		"Access-Control-Allow-Origin": "*",
+	}
+};
 
 export function loadArticles() {
 	return (dispatch) => {
@@ -65,13 +72,17 @@ export function follow(id, user_id) {
 	}
 }
 
-export function SignInUser(user_data) {
-	return (dispatch) => {
-		axios.post(`${url}user`, user_data).then((res) => {
-			let user = res.data;
-			localStorage.setItem('Auth', JSON.stringify(user))
-			dispatch({type: 'SET_USER', user})
-		}).catch((err) => console.log(err))
+export function login(user_data) {
+	// return (dispatch) => {
+	// 	axios.post(`${url}users/login`, user_data).then((res) => {
+	// 		let user = res.data;
+	// 		localStorage.setItem('Auth', JSON.stringify(user));
+	// 		dispatch({type: 'SET_USER', user})
+	// 	}).catch((err) => console.log(err))
+	// }
+	return {
+		type: 'SET_USER',
+		payload: user_data,
 	}
 }
 

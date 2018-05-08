@@ -1,4 +1,4 @@
-import { combineReducer } from 'redux';
+import { combineReducers } from 'redux';
 
 import articles from './articles';
 import authUser from './authUser';
@@ -9,5 +9,4 @@ export default combineReducers({
 	articles,
 	authUser,
 	common,
-	router: routerReducer
 });
