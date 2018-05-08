@@ -2,7 +2,7 @@
 /** */
 import axios from 'axios'
 //const url = "http://localhost:5000/api/"
-export const url = 'https://immense-waters-28989.herokuapp.com/api/';
+export const url = 'http://localhost:8080/api/';
 
 export let header = {
 	headers: {
@@ -72,17 +72,10 @@ export function follow(id, user_id) {
 	}
 }
 
-export function login(user_data) {
-	// return (dispatch) => {
-	// 	axios.post(`${url}users/login`, user_data).then((res) => {
-	// 		let user = res.data;
-	// 		localStorage.setItem('Auth', JSON.stringify(user));
-	// 		dispatch({type: 'SET_USER', user})
-	// 	}).catch((err) => console.log(err))
-	// }
+export function login(user) {
 	return {
 		type: 'SET_USER',
-		payload: user_data,
+		user,
 	}
 }
 

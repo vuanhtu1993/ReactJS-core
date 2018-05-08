@@ -1,7 +1,8 @@
 const initialState = {
 	user: {},
 	isAuth: false,
-	profile: {}
+	profile: {},
+	token: ''
 };
 const authUserReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -9,7 +10,8 @@ const authUserReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isAuth: Object.keys(action.user).length > 0 ? true : false,
-				user: action.user
+				user: action.user,
+				token: JSON.parse(localStorage.Auth).user.token,
 			};
 		case 'FOLLOW_USER':
 			let user = Object.assign({}, state.user)
