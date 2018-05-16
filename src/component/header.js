@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+import logo from '../logo.svg';
 
 class Navigation extends Component {
     render() {
@@ -23,7 +23,7 @@ class Navigation extends Component {
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
+															 aria-haspopup="true" aria-expanded="false">
                                 Dropdown
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
