@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import './App.css';
-import Navigation from "./component/header";
+import Header from "./component/header";
+import Main from "./component/main";
 
 class App extends Component {
-    render() {
-        return (
-            <div className="app">
-                <Navigation/>
-                <h3 className="text-center">Welcome to React application</h3>
-
-            </div>
-        );
-    }
+	render() {
+		return (
+			<div className="app">
+				<Header/>
+				<Main/>
+			</div>
+		);
+	}
 }
 
 export default App;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from '../logo.svg';
 
-class Navigation extends Component {
+class Header extends Component {
     render() {
         return (
             <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -47,4 +47,4 @@ class Navigation extends Component {
     }
 }
 
-export default Navigation;
+export default Header;
