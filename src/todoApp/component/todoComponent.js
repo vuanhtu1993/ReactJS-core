@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addTodo, delTodo, updateTodo } from '../todoAction';
 import UpdateTodo from './updateComponent';
+import TestComponent from "./testComponent";
 
 class Todo extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class Todo extends Component {
     return (
       <div className="container">
         Welcome to app
+        <TestComponent/>
         <p>Add todos:</p>
         <input
           type="text"
@@ -79,8 +81,7 @@ class Todo extends Component {
                 <td>
                   <button
                     className="btn btn-outline-danger"
-                    onClick={() => this.handleDelTodo(todo.id)}
-                  >
+                    onClick={() => this.handleDelTodo(todo.id)}>
                     Del
                   </button>
                 </td>
