@@ -35,6 +35,7 @@
   * [ ] Modify the app to display 'Hello World' in app
   * [ ] Using Developer Tools to inspect HTML <br>
 ## 1.4 Component 
+- React Element: Một react element (là thành phần đã được rendered trên DOM ảo) là bất biến (immutable). Một khi đã tạo (rendered) element thì không thể thay đổi nội dung hay thuộc tính của nó .Chỉ có một cách để thay đổi là tạo ra một element mới bằng ReactDOM.render()
   * [ ] Understand what is a React Component ? <br>
   React được xây dựng xung quanh các Component, chứ không dùng template như các framework khác. Mỗi thành phần trên giao diện là một    Component. Các component có thể là Button, InputText, ... và các component có thể được lồng nhau. Các component trong React giống như các thể HTML. Mỗi component đều có props và state.
   Để tạo một component ta có hai cách: 
