@@ -4,6 +4,7 @@ import Navigation from "./header";
 import Game from "./tictactoe/index";
 import CountDown from "./countdown/countdown";
 import Todos from "./Todos/todos";
+import IncrementNumber from "./IncrementNumber";
 
 class App extends Component {
     render() {
@@ -15,6 +16,7 @@ class App extends Component {
                     <Game/>
                     <CountDown/>
                     <Todos/>
+                    <IncrementNumber/>
                 </div>
             </div>
         );
