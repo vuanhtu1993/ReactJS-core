@@ -8,25 +8,27 @@ class CountDown extends Component {
         }
     }
 
-    changeTime() {
-        alert('Do nothing !');
-    }
-
-    render() {
+    componentDidMount() {
         const countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
-        setInterval(() => {
+        this.timeID = setInterval(() => {
             const now = new Date().getTime();
             this.setState({distance: countDownDate - now})
         }, 1000);
+    }
+
+    componentWillUnmount() {
+        this.timeID.clearInterval();
+    }
+
+    render() {
         return (
             <div>
                 <h4>Welcome count down application</h4>
-                <p>{this.state.distance}</p>
+                <p>Count down to "Sep 5, 2018 15:37:25"</p>
                 <p> Days:{Math.floor(this.state.distance / (1000 * 60 * 60 * 24))}</p>
                 <p>Hours:{Math.floor((this.state.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}</p>
                 <p>Minute: {Math.floor((this.state.distance % (1000 * 60 * 60)) / (1000 * 60))}</p>
                 <p>Second: {Math.floor((this.state.distance % (1000 * 60)) / 1000)}</p>
-                <button onClick={() => this.changeTime()}>Check</button>
             </div>
         )
     }

@@ -23,8 +23,8 @@ class IncrementNumber extends React.Component {
     render() {
         return (
             <div>
-                <h3>{this.state.number}</h3>
                 <h3>Welcome to Increment number app</h3>
+                <h3>{this.state.number}</h3>
                 <Button value={1} incrementNumber={this.incrementNumber}/>
                 <Button value={10} incrementNumber={this.incrementNumber}/>
                 <Button value={100} incrementNumber={this.incrementNumber}/>
