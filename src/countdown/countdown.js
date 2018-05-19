@@ -1,34 +1,59 @@
 import React, {Component} from 'react';
+import Clock from "./clock";
 
 class CountDown extends Component {
     constructor(props) {
         super();
         this.state = {
-            distance: 0
+            distance: 0,
+            time: "",
+            isShowClock: false
         }
     }
 
     componentDidMount() {
-        const countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
+    }
+
+    countDown = () => {
+        if (this.state.time === "") {
+            return alert('Fill in the time to count down first !');
+        }
+        const countDownDate = new Date(this.state.time).getTime();
         this.timeID = setInterval(() => {
             const now = new Date().getTime();
             this.setState({distance: countDownDate - now})
         }, 1000);
-    }
+    };
+
+    handleChange = (e) => {
+        clearInterval(this.timeID);
+        this.setState({
+            time: e.target.value,
+            isShowClock: true
+        });
+    };
+
+    handleReset = () => {
+        this.setState({
+            time: "",
+            isShowClock: false
+        });
+    };
 
     componentWillUnmount() {
-        this.timeID.clearInterval();
+
     }
 
     render() {
+        const clock = <Clock distance={this.state.distance} />;
         return (
             <div>
                 <h4>Welcome count down application</h4>
                 <p>Count down to "Sep 5, 2018 15:37:25"</p>
-                <p> Days:{Math.floor(this.state.distance / (1000 * 60 * 60 * 24))}</p>
-                <p>Hours:{Math.floor((this.state.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}</p>
-                <p>Minute: {Math.floor((this.state.distance % (1000 * 60 * 60)) / (1000 * 60))}</p>
-                <p>Second: {Math.floor((this.state.distance % (1000 * 60)) / 1000)}</p>
+                <input type="text" value={this.state.time} onChange={this.handleChange}/>
+                <button onClick={this.countDown}>count down</button>
+                {this.state.isShowClock && clock}
+                <button onClick={this.handleReset}>Reset</button>
             </div>
         )
     }
