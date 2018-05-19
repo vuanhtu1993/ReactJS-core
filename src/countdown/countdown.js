@@ -45,14 +45,14 @@ class CountDown extends Component {
     }
 
     render() {
-        const clock = <Clock distance={this.state.distance} />;
+        const clock = <Clock distance={this.state.distance} isShowClock={this.state.isShowClock}/>;
         return (
             <div>
                 <h4>Welcome count down application</h4>
                 <p>Count down to "Sep 5, 2018 15:37:25"</p>
                 <input type="text" value={this.state.time} onChange={this.handleChange}/>
                 <button onClick={this.countDown}>count down</button>
-                {this.state.isShowClock && clock}
+                {clock}
                 <button onClick={this.handleReset}>Reset</button>
             </div>
         )
