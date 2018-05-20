@@ -27,8 +27,8 @@ class Calculator extends React.Component {
     return (
       <div>
         <h3>Temperature conversion</h3>
-        <TemperatureInput name="Celsius" temp={this.state.temp} handleChange={this.handleChange}/>
-        <TemperatureInput name="Fahrenheit" temp={this.state.temp} handleChange={this.handleChange}/>
+        <TemperatureInput name="Celsius" temp={this.state.temp} onTemperatureChange={this.handleChange}/>
+        <TemperatureInput name="Fahrenheit" temp={this.state.temp} onTemperatureChange={this.handleChange}/>
       </div>
     );
   }
