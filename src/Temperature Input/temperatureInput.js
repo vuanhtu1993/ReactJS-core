@@ -13,7 +13,7 @@ class TemperatureInput extends React.Component {
     return (
       <div>
         <h5>Input {this.props.name} temp</h5>
-        <input type="text" value={this.props.temp} onChange={this.handleChange}/>
+        <input type="number" value={this.props.temp} onChange={this.handleChange}/>
       </div>
     );
   }

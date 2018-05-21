@@ -6,12 +6,21 @@ class Calculator extends React.Component {
     super();
     this.state = {
       temp: "",
+      scale: ""
     }
   }
 
-  handleChange = (value) => {
+  handleChangeCelius = (value) => {
     this.setState({
       temp: value,
+      scale: "C"
+    });
+  };
+
+  handleChangeFahrenit = (value) => {
+    this.setState({
+      temp: value,
+      scale: "F"
     });
   };
 
@@ -24,11 +33,16 @@ class Calculator extends React.Component {
   }
 
   render() {
+    const temp = this.state.temp;
+    const scale = this.state.scale;
+    const tempC = scale === "F" ? this.toCelius(temp) : temp;
+    const tempF = scale === "C" ? this.toFahrenheir(temp) : temp;
+    console.log(this.state);
     return (
       <div>
         <h3>Temperature conversion</h3>
-        <TemperatureInput name="Celsius" temp={this.state.temp} onTemperatureChange={this.handleChange}/>
-        <TemperatureInput name="Fahrenheit" temp={this.state.temp} onTemperatureChange={this.handleChange}/>
+        <TemperatureInput name="Celsius" temp={tempC} onTemperatureChange={this.handleChangeCelius}/>
+        <TemperatureInput name="Fahrenheit" temp={tempF} onTemperatureChange={this.handleChangeFahrenit}/>
       </div>
     );
   }
