@@ -67,6 +67,14 @@ class ProductTable extends React.Component {
 }
 
 class SearchBar extends React.Component {
+  handleInput = (e) => {
+    this.props.onChangeInput(e.target.value);
+  };
+
+  handleCheckBox = () => {
+    this.props.onChangeCheckBox();
+  };
+
   render() {
     const filterText = this.props.filterText;
     const inStockOnly = this.props.inStockOnly;
@@ -76,11 +84,15 @@ class SearchBar extends React.Component {
         <input
           type="text"
           placeholder="Search..."
-          value={filterText} />
+          value={filterText}
+          onChange={this.handleInput}
+        />
         <p>
           <input
             type="checkbox"
-            checked={inStockOnly} />
+            checked={inStockOnly}
+            onChange={this.handleCheckBox}
+          />
           {' '}
           Only show products in stock
         </p>
@@ -98,13 +110,28 @@ export class FilterableProductTable extends React.Component {
     }
   }
 
+  handleInput = (text) => {
+    this.setState({
+      filterText: text
+    });
+  };
+
+  handleCheckBox = () => {
+    this.setState((prevState) => ({
+      inStockOnly: !prevState.inStockOnly,
+    }))
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div>
         <h3>Filterable Product Table</h3>
         <SearchBar
           filterText={this.state.filterText}
           inStockOnly={this.state.inStockOnly}
+          onChangeInput={this.handleInput}
+          onChangeCheckBox={this.handleCheckBox}
         />
         <ProductTable products={this.props.products}/>
       </div>
