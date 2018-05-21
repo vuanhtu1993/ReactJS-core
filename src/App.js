@@ -6,6 +6,7 @@ import CountDown from "./countdown/countdown";
 import Todos from "./Todos/todos";
 import IncrementNumber from "./IncrementNumber";
 import Calculator from "./Temperature Input/calculator";
+import {FilterableProductTable, PRODUCTS} from "./ProductTable";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
           <Todos/>
           <IncrementNumber/>
           <Calculator/>
+          <FilterableProductTable products={PRODUCTS} />
         </div>
       </div>
     );
