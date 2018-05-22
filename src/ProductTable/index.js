@@ -22,7 +22,7 @@ class ProductRow extends React.Component {
     }
     return (
       <tr style={{color: "red"}}>
-        <td>{this.props.product.name}</td>
+        <tfld>{this.props.product.name}</tfld>
         <td>{this.props.product.price}</td>
       </tr>
     );
@@ -37,11 +37,21 @@ class ProductTable extends React.Component {
   render() {
     let row = [];
     let category = null;
+    // filter condition
+    let filterText = this.props.filterText;
+    let isStockOnly = this.props.isStockOnly;
+
     this.props.products.forEach((product) => {
+      if (product.name.indexOf(filterText) === -1) {
+        return;
+      }
+      if (isStockOnly && !product.stocked) {
+        return;
+      }
       if (product.category !== category) {
         row.push(
           <ProductCategoryRow product={product}/>
-        )
+        );
       }
       row.push(
         <ProductRow product={product}/>
@@ -57,9 +67,7 @@ class ProductTable extends React.Component {
             <td>Price</td>
           </tr>
           </thead>
-          <tbody>
-          {row}
-          </tbody>
+          <tbody>{row}</tbody>
         </table>
       </div>
     );
@@ -85,8 +93,7 @@ class SearchBar extends React.Component {
           type="text"
           placeholder="Search..."
           value={filterText}
-          onChange={this.handleInput}
-        />
+          onChange={this.handleInput}/>
         <p>
           <input
             type="checkbox"
@@ -133,7 +140,11 @@ export class FilterableProductTable extends React.Component {
           onChangeInput={this.handleInput}
           onChangeCheckBox={this.handleCheckBox}
         />
-        <ProductTable products={this.props.products}/>
+        <ProductTable
+          products={this.props.products}
+          filterText={this.state.filterText}
+          isStockOnly={this.state.inStockOnly}
+        />
       </div>
     );
   }
