@@ -209,22 +209,47 @@ const MyButton = (<button>{1 + 5}</button>)
   ```
 ## 1.9 Component Lifecycle Methods [%]
   * [ ] Understand what is lifecycle methods <br>
-  Một component sẽ có 4 lifecycle được thực hiện theo thứ tự: <br>
-  - constructor(): được gọi khi một component được khởi tạo. Ta có thể thiết lập state ban đầu và ràng buộc các class method. <br>
-  - componentWillMount(): giai đoạn chuẩn bị render component lần đầu, chỉ sử dụng một lần. <br>
-  - render(): phương thức này là bắt buộc và trả về là các thành phần của component.
-  - componentDidMount(): giai đoạn sau khi render component lần đầu.
+  Các component sẽ có một số lifecycle cho phép thực hiện một tác vụ nào đó tại một thời điểm cụ thể. Có 3 giai đoạn trong một vòng đời của một component: Mounting, Update and Unmounting.
+  - Mount: Khi một component được thêm vào DOM sẽ gọi các method theo thứ tự:
+    + constructor()
+    + componentWillMount()
+    + render()
+    + componentDidMount()
+  - Update: Khi props hay state của component được thay đổi thì bản thân component sẽ được re-render lại qua các phương thức:
+    + componentWillReceiveProps()
+    + shouldComponentUpdate()
+    + componentWillUpdate()
+    + render()
+    + componentDidUpdate()
+  - Unmount: Compont được xóa khỏi DOM.
+    + componentWillUnmount()
   * [ ] Understand why we need lifecycle methods <br>
+  Lifecycle methods cho phép ta cập nhật lại UI khi có sự thay đổi về props hoặc state của các component.
   * [ ] Understand 7 lifecycle methods of React Component (http://busypeoples.github.io/post/react-component-lifecycle/) <br>
+  7 vòng đời của một Component trong React: 
+  - componentWillMount(): được thực thi trước khi component được render. Phương thức này chỉ được gọi một lần.
+  - componentDidMount(): method này được thực thi khi một component được render và được đưa vào DOM. Có thể sử dụng method này để lấy dữ liệu từ server với AJAX.
+  - componentWillReceiveProps(): sẽ được thực thi ngay khi thuộc tính props được update và trước khi component được render lại. 
+  - shouldComponentUpdate(): sẽ trả về true hoặc false. Phương thức này sẽ xác định 1 component có được update hay không. Mặc định giá trị này là true. Nếu bạn không muốn component render lại sau khi update state hay props thì return giá trị thành false.
+  - componentWillUpdate(): được gọi khi chúng ta update state của component trước khi nó render lại
+  - componentDidUpdate(): sau khi componentWillUpdate ở trên được gọi xong thì đến lượt method này được gọi. 
+  - componentWillUnmount(): được gọi khi chúng ta xóa component khỏi DOM.
   * [ ] Understand componentDidMount = where you do DOM manipulation & AJAX request <br>
   * [ ] Understand componentWillMount = clean up after your React components gets destroyed <br>
   * [ ] Practice: create a Component that have 7 lifecycle methods and observe the behaviour <br>
 ## 1.10 Forms [%]
-  * [ ] Understand how to to forms in React <br>
+  * [ ] Understand how to to forms in React <br>r
 ## 1.11 Events [%]
   * [ ] Understand how to handle events in React such as: click event on a button, keypress event on a input <br>
+  Handle event trong React tương tự như handle event trong DOM. Tuy nhiên có một số điểm khác biệt:
+  - Tên event được viết theo kiểu camelCase: onClick, onChange...
+  - Các hàm xử lí sự kiện được để bên trong cặp dấu ngoặc nhọn {}. onClick={handleClick}
 ## 1.12 Refs [%]
-  * [ ] Understand refs = how to acess DOM nodes within your React Component (https://reactjs.org/docs/refs-and-the-dom.html#the-ref-string-attribute) <br>
+  * [ ] Understand refs = how to access DOM nodes within your React Component (https://reactjs.org/docs/refs-and-the-dom.html#the-ref-string-attribute) <br>
+  refs dùng để tham chiếu đến một node DOM hoặc là một thể hiện của một component. refs sẽ trả về một node mà chúng ta tham chiếu đến. refs được sử dụng trong một số trường hợp:
+  - Managing focus, text selection, or media playback.
+  - Khi sử dụng animation.
+  - Sử dụng với các thư viện DOM thứ ba.
   * [ ] Practice use refs to access a div and change style add text to it <br>
 ## 1.13 Mixins [0%]
   * [ ] Understand mixins = reuse methods across multiple components (https://reactjs.org/docs/components-and-props.html#mixins) <br>
