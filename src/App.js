@@ -16,9 +16,11 @@ class App extends Component {
           <LoggedUser>
             {(userInformation) => userInformation ? <LoginButton/> : <LogoutButton/>}
           </LoggedUser>
+          <div className="height"/>
           <ScrollPosition>
-            {(username) => <div>{username}</div>}
+            {(position) => <div className="position">{position}</div>}
           </ScrollPosition>
+          <div className="height"/>
         </div>
       </div>
     );

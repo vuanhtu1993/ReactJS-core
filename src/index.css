@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.height {
+  height: 800px;
+}
+.position {
+  font-size: 40px;
+  font-weight: bolder;
+}
